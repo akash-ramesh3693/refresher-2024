@@ -51,7 +51,11 @@ body {
     top: 180px;
     left: 320px;
     width: 180px;
+<<<<<<< HEAD
+    z-index: 100;
+=======
     z-index: 0;
+>>>>>>> css
 }
 
 .image-1 {
