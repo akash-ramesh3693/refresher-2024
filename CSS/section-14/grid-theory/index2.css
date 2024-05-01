@@ -23,6 +23,8 @@
   padding: 1rem;
   border-radius: 5px;
 }
+.new{}
+
 
 .quote:nth-of-type(2){
     grid-column: span 2;
