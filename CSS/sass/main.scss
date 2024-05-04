@@ -1,6 +1,24 @@
-@import "typography.css";
+@import "variables.scss";
+@import "typography.scss";
+
+@mixin display-flex(){
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin media-min-width($width){
+  @media (min-width: $width) {
+  
+    @content;
+  }
+}
 html {
   font-size: 94.75%;
+  @include media-min-width(40rem){
+    font-size: 120%;
+  }
 }
 
 body {
@@ -9,60 +27,61 @@ body {
 }
 
 .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
+ 
+  @include display-flex();
   flex: {
     direction: column;
     wrap:nowrap;
   }
   align-items: center;
   padding: 3rem 0;
-  box-sizing: border-box;
+  box-sizing: $box-size;
+}
+
+.sass-section{
+  border: 0.05rem solid $main-color;
+  background: lighten(map-get($colors, main), 72%);
+  text-align: center;
+  width: 90%;
+  box-sizing: $box-size;
+  @include media-min-width(40rem){
+    width: 30rem;
+  }
+
 }
 
 .sass-introduction {
-  border: 0.05rem solid #521751;
-  background: #fae5ff;
+  @extend .sass-section;
   padding: 2rem;
-  text-align: center;
   box-shadow: 0.2rem 0.2rem 0.1rem #ccc;
-  width: 90%;
-  box-sizing: border-box;
+    p {
+    margin: 0;
+    }
+
 }
 
-.sass-introduction p {
-  margin: 0;
-}
 
 .sass-details {
-  border: 0.05rem solid #521751;
-  background: #fae5ff;
-  padding: 1rem;
-  text-align: center;
-  margin: 2rem 0;
-  width: 90%;
-  box-sizing: border-box;
+    @extend .sass-section;
+    padding: 1rem;
+    margin: 2rem 0;
+
 }
 
 .section-header {
-  border-bottom: 0.05rem solid #521751;
+  border-bottom: $border-default;
+   h1 {
+    margin: 0 0 1rem 0;
+    }
+  
 }
 
-.section-header h1 {
-  margin: 0 0 1rem 0;
-}
 
 .documentation-links {
   list-style: none;
   margin: 1rem 0 0 0;
   padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+  @include display-flex();
   flex-direction: column;
 
   li{
@@ -71,34 +90,37 @@ body {
 
     .documentation-link {
       text-decoration: none;
-      color: #521751;
+      color: $main-color;
       display: block;
       padding: 0.2rem;
-      border: 0.05rem solid #521751;
+      border: 0.05rem solid $main-color;
+
+      &:hover,
+      &:active{
+        color: white;
+        background:map-get($colors, secondary );
+        border-color: map-get($colors, secondary );
+      }
     }
 
-    .documentation-link:hover,.documentation-link:active {
-     color: white;
-     background: #fa923f;
-     border-color: #fa923f;
-    }
+  
   }
 
 }
 
 
 
-@media (min-width: 40rem) {
-  html {
-    font-size: 125%;
-  }
+// @media (min-width: 40rem) {
+//   html {
+//     font-size: 125%;
+//   }
 
-  .container {
-    padding: 3rem 0;
-  }
+//   .container {
+//     padding: 3rem 0;
+//   }
 
-  .sass-introduction,
-  .sass-details {
-    width: 30rem;
-  }
-}
+//   .sass-introduction,
+//   .sass-details {
+//     width: 30rem;
+//   }
+// }
