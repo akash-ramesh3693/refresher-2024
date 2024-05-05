@@ -1,3 +1,8 @@
+
+:root{
+  --dark-green:#0e4f1fl;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -41,6 +46,9 @@ main {
   background: #2ddf5c;
   padding: 0.5rem 1rem;
   z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -109,7 +117,7 @@ main {
 .main-nav__item a,
 .mobile-nav__item a {
   text-decoration: none;
-  color: #0e4f1f;
+  color: var(--dark-green, #0e4f1f);
   font-weight: bold;
   padding: 0.2rem 0;
 }
